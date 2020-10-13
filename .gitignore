@@ -1,0 +1,9 @@
+.gradle
+.idea
+crewmate-common/build
+crewmate-game/build
+crewmate-redirector/build
+crewmate-server/build
+gradle
+gradlew
+gradlew.bat

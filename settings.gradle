@@ -1,0 +1,3 @@
+rootProject.name = 'crewmate'
+
+include 'crewmate-common', 'crewmate-game', 'crewmate-redirector', 'crewmate-server'
