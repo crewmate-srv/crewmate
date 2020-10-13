@@ -1,15 +1,19 @@
 package xyz.skyz.crewmate.game;
 
+import xyz.skyz.crewmate.common.util.PropertiesFile;
 import xyz.skyz.crewmate.server.NetServer;
 import xyz.skyz.crewmate.server.base.CrewmateServer;
 import xyz.skyz.crewmate.server.base.ServerEndpoint;
 
 public class CrewmateGameServer extends CrewmateServer {
 
+    private PropertiesFile propertiesFile;
+
     public CrewmateGameServer() {
-        NetServer netServer = new NetServer(this, "0.0.0.0", 22024);
+        propertiesFile = new PropertiesFile("server.properties");
+        NetServer netServer = new NetServer(this, propertiesFile.get("listen-address"), propertiesFile.getInteger("listen-port"));
         setNetServer(netServer);
-        setGameManager(new CrewmateGameManager(this, new ServerEndpoint("0.0.0.0", 22024), "http://127.0.0.1:8087"));
+        setGameManager(new CrewmateGameManager(this, new ServerEndpoint(propertiesFile.get("public-address"), propertiesFile.getInteger("public-port")), propertiesFile.get("controller-api")));
         netServer.start();
     }
 
