@@ -10,6 +10,8 @@ public class CrewmateGameServer extends CrewmateServer {
     private PropertiesFile propertiesFile;
 
     public CrewmateGameServer() {
+        System.out.println("Crewmate Game Server");
+        System.out.println("For issues please submit them to: https://github.com/crewmate-srv/crewmate/issues");
         propertiesFile = new PropertiesFile("server.properties");
         NetServer netServer = new NetServer(this, propertiesFile.get("listen-address"), propertiesFile.getInteger("listen-port"));
         setNetServer(netServer);
